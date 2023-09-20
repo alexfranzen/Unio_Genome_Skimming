@@ -52,7 +52,7 @@ This has basically been taken from the [QC step](https://phyluce.readthedocs.io/
 If using Illumiprocessor (which outputs files that make it convenient to run with phyluce), do the following. 
 
 You first need to set up you directory structure to look something like this:
-<PROJECT_DIR>
+->PROJECT_DIR
 	->illumiprocessor.conf
 	->raw-fastq
     		->22113FL-01-01-173_L001_R1_001.fastq.gz
