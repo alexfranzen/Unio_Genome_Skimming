@@ -52,15 +52,13 @@ This has basically been taken from the [QC step](https://phyluce.readthedocs.io/
 If using Illumiprocessor (which outputs files that make it convenient to run with phyluce), do the following. 
 
 You first need to set up you directory structure to look something like this:
-```
 <PROJECT_DIR>
-	L>illumiprocessor.conf
-	L>raw-fastq
-		L>22113FL-01-01-173_L001_R1_001.fastq.gz 
-		L>22113FL-01-01-173_L001_R2_001.fastq.gz 
-		L>22113FL-01-01-174_L001_R1_001.fastq.gz 
-		L>22113FL-01-01-174_L001_R2_001.fastq.gz
-```
+	->illumiprocessor.conf
+	->raw-fastq
+    		->22113FL-01-01-173_L001_R1_001.fastq.gz
+    		->22113FL-01-01-173_L001_R2_001.fastq.gz
+    		->22113FL-01-01-174_L001_R1_001.fastq.gz
+    		->22113FL-01-01-174_L001_R2_001.fastq.gz
 
 Then your illumiprocessor.conf file needs to look like the following. You will likely need the Admire SampleKey document or the document that lists the IndexID/Barcode and IndexSequence for each sample. 
 
@@ -274,6 +272,21 @@ iqtree2 -s alignment.phy -m MFP -B 1000
 This assumes that the executable should be added to your PATH enviroment variable so that IQ-TREE can be invoked by simply entering iqtree2 in the command-line. 
 
 I won't get into Bayesian inference, but there are good tutorials for [RevBayes](https://revbayes.github.io/tutorials/) available. You can also try [BEAST](https://beast.community/first_tutorial). 
+
+
+## 7. UCE Phylogenomics implemented in phyluce
+
+I would more or less follow the phyluce [Tutorial I](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#). There are a couple of notes though that are helpful. 
+
+When you get to the [Finding UCE loci](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) step, you will need to modify the regex argument in your [phyluce_assembly_match_contigs_to_probes](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) command.
+
+If using the Unioverse probes, you will need the [Unioverse_probes_reform.fasta](https://github.com/alexfranzen/Unio_Genome_Skimming/blob/main/Unioverse_probes_reform.fasta) file and you will need to specify --regex 'RAPID_GENOMICS_8901_(\d+)'. 
+
+Here's an example command
+
+```
+phyluce_assembly_match_contigs_to_probes --contigs /Users/Lampsilis/Documents/Alex_projects/unioverse_test/contigs --probes /Users/Lampsilis/Documents/Alex_projects/unioverse_test/Unioverse_probes_reform.fasta --output /Users/Lampsilis/Documents/Alex_projects/unioverse_test/uce-search-results --regex 'RAPID_GENOMICS_8901_(\d+)'
+```
 
 ---
 
