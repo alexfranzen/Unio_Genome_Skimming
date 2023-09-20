@@ -280,7 +280,7 @@ I would more or less follow the phyluce [Tutorial I](https://phyluce.readthedocs
 
 When you get to the [Finding UCE loci](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) step, you will need to modify the regex argument in your [phyluce_assembly_match_contigs_to_probes](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) command.
 
-If using the Unioverse probes, you will need the [Unioverse_probes_reform.fasta](https://github.com/alexfranzen/Unio_Genome_Skimming/blob/main/Unioverse_probes_reform.fasta) file and you will need to specify --regex 'RAPID_GENOMICS_8901_(\d+)'. 
+If using the Unioverse probes, you will need the [Unioverse_probes_reform.fasta](https://github.com/alexfranzen/Unio_Genome_Skimming/blob/main/Unioverse_probes_reform.fasta) file and you will need to specify [--regex 'RAPID_GENOMICS_8901_(\d+)']. 
 
 Here's an example command
 
