@@ -53,12 +53,12 @@ If using Illumiprocessor (which outputs files that make it convenient to run wit
 
 You first need to set up you directory structure to look something like this:
 <PROJECT_DIR>
-├── illumiprocessor.conf
-└── raw-fastq
-    ├── 22113FL-01-01-173_L001_R1_001.fastq.gz
-    ├── 22113FL-01-01-173_L001_R2_001.fastq.gz
-    ├── 22113FL-01-01-174_L001_R1_001.fastq.gz
-    └── 22113FL-01-01-174_L001_R2_001.fastq.gz
+	->illumiprocessor.conf
+	->raw-fastq
+    		->22113FL-01-01-173_L001_R1_001.fastq.gz
+    		->22113FL-01-01-173_L001_R2_001.fastq.gz
+    		->22113FL-01-01-174_L001_R1_001.fastq.gz
+    		->22113FL-01-01-174_L001_R2_001.fastq.gz
 
 Then your illumiprocessor.conf file needs to look like the following. You will likely need the Admire SampleKey document or the document that lists the IndexID/Barcode and IndexSequence for each sample. 
 
@@ -172,7 +172,7 @@ sh mitofinder_annotate_spades.sh <path_to_spades_contigs> <genetic_code>
 This is more or less taken step 3 of [PhylOcto](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH#3-extract-gene-orders-from-octocoral-mitogenomes)
 Dependencies: [Biopython](https://biopython.org), and optionally the webserver at [http://trna.ucsc.edu/tRNAscan-SE/](http://trna.ucsc.edu/tRNAscan-SE/).
 
-#### [gene_order_script.sh](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_script.sh) ####
+#### [gene_order_script.sh](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_script.sh)
 Recommended: If you'd like to make your life easier, first use [gene_order_script.sh](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_script.sh) to aggregate all the .gb and .infos files you need from the MitoFinder results into a new directory.
 
 Example usage:
@@ -181,7 +181,7 @@ Example usage:
 bash gene_order_script.sh dir-with-mitofinder-results
 ```
 
-#### [gene_order.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order.py) ####
+#### [gene_order.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order.py)
 Use [gene_order.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order.py) by supplying the path to a directory of .gb files you want to extract the gene orders from (also accepts the name of a single .gb file). You can also specify the name of your output file with --name, and whether or not to overwrite pre-existing files with --overwrite.
 
 This will output a csv with a gene order match for every sample as well as information from their .infos file such as mitogenome length, GC content, and circularization. It grabs gene orders from [gene_order_params.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_params.py) (more on that later).
@@ -192,7 +192,7 @@ Example usage:
 python3 gene_order.py dir-with-gb-files --name output-name --overwrite
 ```
 
-#### [gene_order_params.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_params.py) ####
+#### [gene_order_params.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_params.py)
 You can (and probably should) edit [gene_order_params.py](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH/blob/main/gene_order_params.py) to fit your preferences. 
 For instance, here are a few valid gene orders.
 ```
