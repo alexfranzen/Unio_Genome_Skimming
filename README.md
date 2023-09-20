@@ -7,9 +7,9 @@ This workflow was created to reconstruct a phylogeny of Unionoida based on mitoc
 1. Initial data QC using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) or [fastp](https://github.com/OpenGene/fastp) on paired raw Illumina reads. 
 2. Trim adapters from raw paired raw Illumina reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) or [Illumiprocessor](https://illumiprocessor.readthedocs.io/en/latest/index.html).
 3. Assemble and annotate mitogenomes from clean reads using [Mitofinder](https://github.com/RemiAllio/MitoFinder).
-	3a. Assemble reads using megahit or metaspades implemented in MitoFinder. 
-	3b. Extract gene orders from the assembled mitogenomes (specific to Unionoida mtgenomes).
-	3c. Align individual genes using [MAFFT] (https://mafft.cbrc.jp/alignment/software/) or [MUSCLE](https://www.ebi.ac.uk/Tools/msa/muscle/) implemented in [AliView](https://ormbunkar.se/aliview/) or other sequence viewing software.  
+3a. Assemble reads using megahit or metaspades implemented in MitoFinder. 
+3b. Extract gene orders from the assembled mitogenomes (specific to Unionoida mtgenomes).
+3c. Align individual genes using [MAFFT] (https://mafft.cbrc.jp/alignment/software/) or [MUSCLE](https://www.ebi.ac.uk/Tools/msa/muscle/) implemented in [AliView](https://ormbunkar.se/aliview/) or other sequence viewing software.  
 4. Extract ribosomal repeat regions (ITS-1, 28S, etc.) from clean read data (can also do it from mitofinder output, I think) in [Geneious](https://www.geneious.com/). 
 5. Concatenate alignments (if needed/desired) or export alignments in phylip or fasta format. 
 6. Construct a phylogeny from the mitogenome and ribosomal gene alignments using [IQ-TREE](http://www.iqtree.org) and [RevBayes](https://revbayes.github.io/).
