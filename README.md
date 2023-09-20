@@ -52,13 +52,15 @@ This has basically been taken from the [QC step](https://phyluce.readthedocs.io/
 If using Illumiprocessor (which outputs files that make it convenient to run with phyluce), do the following. 
 
 You first need to set up you directory structure to look something like this:
-#### ->PROJECT_DIR ####
-	#### 	->illumiprocessor.conf ####
-	####	->raw-fastq ####
-		####  		->22113FL-01-01-173_L001_R1_001.fastq.gz ####
-		####   		->22113FL-01-01-173_L001_R2_001.fastq.gz ####
-		####    	->22113FL-01-01-174_L001_R1_001.fastq.gz ####
-		####    	->22113FL-01-01-174_L001_R2_001.fastq.gz ####
+```
+->PROJECT_DIR
+	->illumiprocessor.conf
+	->raw-fastq
+		->22113FL-01-01-173_L001_R1_001.fastq.gz 
+		->22113FL-01-01-173_L001_R2_001.fastq.gz 
+		->22113FL-01-01-174_L001_R1_001.fastq.gz 
+		->22113FL-01-01-174_L001_R2_001.fastq.gz
+```
 
 Then your illumiprocessor.conf file needs to look like the following. You will likely need the Admire SampleKey document or the document that lists the IndexID/Barcode and IndexSequence for each sample. 
 
