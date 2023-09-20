@@ -287,15 +287,8 @@ If using the Unioverse probes, you will need the [Unioverse_probes_reform.fasta]
 Here's an example of the full command
 
 ```
-phyluce_assembly_match_contigs_to_probes --contigs /Users/Lampsilis/Documents/Alex_projects/unioverse_test/contigs --probes /Users/Lampsilis/Documents/Alex_projects/unioverse_test/Unioverse_probes_reform.fasta --output /Users/Lampsilis/Documents/Alex_projects/unioverse_test/uce-search-results --regex 'RAPID_GENOMICS_8901_(\d+)'
+phyluce_assembly_match_contigs_to_probes --contigs project_dir/unioverse_test/contigs --probes /project_dir/unioverse_test/Unioverse_probes_reform.fasta --output project_dir/unioverse_test/uce-search-results --regex 'RAPID_GENOMICS_8901_(\d+)'
 ```
 
 ---
 
-The project was funded under a NOAA OER grant to C. McFadden, A. Quattrini and S. Herrera.
-
-Example files are provided for ease of use, these don't represent any actual findings from this project.
-
-Feel free to use code for your own purposes, but please cite as according to the [citation file](CITATION.cff).
-
-Please reach out to me [kmitchell@hmc.edu](mailto:kmitchell@hmc.edu) with anything you need help on.
