@@ -281,10 +281,10 @@ I would more or less follow the phyluce [Tutorial I](https://phyluce.readthedocs
 When you get to the [Finding UCE loci](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) step, you will need to modify the regex argument in your [phyluce_assembly_match_contigs_to_probes](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci) command.
 
 If using the Unioverse probes, you will need the [Unioverse_probes_reform.fasta](https://github.com/alexfranzen/Unio_Genome_Skimming/blob/main/Unioverse_probes_reform.fasta) file and you will need to specify the '-regex' argument.  
-
-##### --regex 'RAPID_GENOMICS_8901_(\d+)'
-
-Here's an example command
+```
+--regex 'RAPID_GENOMICS_8901_(\d+)'
+```
+Here's an example of the full command
 
 ```
 phyluce_assembly_match_contigs_to_probes --contigs /Users/Lampsilis/Documents/Alex_projects/unioverse_test/contigs --probes /Users/Lampsilis/Documents/Alex_projects/unioverse_test/Unioverse_probes_reform.fasta --output /Users/Lampsilis/Documents/Alex_projects/unioverse_test/uce-search-results --regex 'RAPID_GENOMICS_8901_(\d+)'
