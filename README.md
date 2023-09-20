@@ -1,4 +1,4 @@
-# Unio_Genome_Skimming
+# Unionoida Genome Skimming Workflow
 This is just a place where I've curated resources to help with assembling and annotating genome skim reads for phylogenetic analyses. 
 # Purpose #
 
