@@ -2,15 +2,15 @@
 This is just a place where I've curated resources to help with assembling and annotating genome skim reads for phylogenetic analyses. 
 # Purpose #
 
-This workflow was created to reconstruct a phylogeny of Unionoida based on mitochondrial genomes, ribosomal repeats, and UCEs extracted from genome skim data. It does so as follows, but keep note that output/input from several of these steps can be somewhat interchangeably (i.e., annotating mtgenomes in MitoFinder from SPAdes assemblies from phyluce, etc.), therefor this is not necessarily a linear workflow:
+This workflow is meant to help guide systematic research of the Unionoida by building phylogenies from mitochondrial genomes, ribosomal repeats, and UCEs extracted from genome skim data. It does so as follows, but keep note that output/input from several of these steps can be somewhat interchangeably (i.e., annotating mtgenomes in MitoFinder from SPAdes assemblies from phyluce, etc.), therefor this is not necessarily a linear workflow:
 
 1. Initial data QC using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) or [fastp](https://github.com/OpenGene/fastp) on paired raw Illumina reads. 
 2. Trim adapters from raw paired raw Illumina reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) or [Illumiprocessor](https://illumiprocessor.readthedocs.io/en/latest/index.html).
-3. Assemble and annotate mitogenomes from clean reads using [Mitofinder](https://github.com/RemiAllio/MitoFinder).
+3. Assemble and annotate mitogenomes from clean reads using [MitoFinder](https://github.com/RemiAllio/MitoFinder).
 3a. Assemble reads using megahit or metaspades implemented in MitoFinder. 
 3b. Extract gene orders from the assembled mitogenomes (specific to Unionoida mtgenomes).
-3c. Align individual genes using [MAFFT] (https://mafft.cbrc.jp/alignment/software/) or [MUSCLE](https://www.ebi.ac.uk/Tools/msa/muscle/) implemented in [AliView](https://ormbunkar.se/aliview/) or other sequence viewing software.  
-4. Extract ribosomal repeat regions (ITS-1, 28S, etc.) from clean read data (can also do it from mitofinder output, I think) in [Geneious](https://www.geneious.com/). 
+3c. Align individual genes using [MAFFT](https://mafft.cbrc.jp/alignment/software/) or [MUSCLE](https://www.ebi.ac.uk/Tools/msa/muscle/) implemented in [AliView](https://ormbunkar.se/aliview/) or other sequence viewing software.  
+4. Extract ribosomal subunits (RSU -- ITS-1, 28S, etc.) from clean read data (can also do it from mitofinder output, I think) in [Geneious](https://www.geneious.com/). 
 5. Concatenate alignments (if needed/desired) or export alignments in phylip or fasta format. 
 6. Construct a phylogeny from the mitogenome and ribosomal gene alignments using [IQ-TREE](http://www.iqtree.org) and [RevBayes](https://revbayes.github.io/).
 7. UCE Phylogenomics implemented in phyluce
@@ -39,7 +39,7 @@ sh fastqc.sh <path_to_raw_sequences>
 
 There is the [fastqc.job](https://github.com/trippster08/genome_skimming_LAB/blob/main/jobs/fastqc.job) for running on hydra. 
 
-If you do not enter the path to the raw sequences in the command, or enter a path to a directory that does not contain fastq.gz files, you will get the following error "Correct path to read files not entered (*.fastq.gz)". You may get additional errors, but they should stem from an incorrect or missing path, so adding that path should fix these errors.
+If you do not enter the path to the raw sequences in the command, or enter a path to a directory that does not contain fastq.gz files, you will get the following error "Correct path to read files not entered (*.fastq.gz)". You may get additional errors, but they should stem from an incorrect or missing path, so adding that path should fix these errors. Also, if your samples are named like '22113FL-01-01-173_L001_R1_001.fastq.gz', you need to remove the '22113' element because the qsub cannot create jobs that start with a digit. 
 
 Download the directory containing the FastQC results (it should be /data/raw/fastqc_analyses) to your computer. Open the html files using your browser to examine your read quality. Interpreting FastQC results can be tricky, and will not be discussed here. See LAB staff or others familiar with fastQC for help.
 
@@ -168,7 +168,7 @@ mitofinder -j ${1} -s ${1}_R1_001_unpaired.fastq.gz -t trnascan -r $2 -o 5 -p 6 
 sh mitofinder_annotate_spades.sh <path_to_spades_contigs> <genetic_code>
 ```
 
-## 3b. Extract Gene Orders from Unio Mitogenomes (Optional)
+### 3b. Extract Gene Orders from Unio Mitogenomes (Optional)
 This is more or less taken step 3 of [PhylOcto](https://github.com/Kenneth-Mitchell/PhylOcto_NMNH#3-extract-gene-orders-from-octocoral-mitogenomes)
 Dependencies: [Biopython](https://biopython.org), and optionally the webserver at [http://trna.ucsc.edu/tRNAscan-SE/](http://trna.ucsc.edu/tRNAscan-SE/).
 
@@ -212,7 +212,7 @@ So, the gene 'rns' will be forced to be named 'rrns' in order to match the gene 
 
 If you also wish, you can change the start gene in the parameters file. cox1 is widely used as the start for gene orders, but if you wish to have a different start be sure to change the gene order Enums to match.
 
-## 4. Extract ribosomal repeat regions in [Geneious](https://www.geneious.com/)
+## 4. Extract RSU in [Geneious](https://www.geneious.com/)
 
 There may be a better way to do this that I don't know about, but this is what I think most people in IZ are doing right now. 
 
